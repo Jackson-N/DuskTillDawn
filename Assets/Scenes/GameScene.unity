@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.038982745, g: 0.040060375, b: 0.040257096, a: 1}
+  m_IndirectSpecularColor: {r: 0.03943669, g: 0.040626563, b: 0.04084039, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4370,7 +4370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1938606937585816520, guid: bed034c3d7be10f43bc4b6952f0492ab, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1938606937585816520, guid: bed034c3d7be10f43bc4b6952f0492ab, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4398,7 +4398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1938606937766617047, guid: bed034c3d7be10f43bc4b6952f0492ab, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1938606937766617047, guid: bed034c3d7be10f43bc4b6952f0492ab, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4418,7 +4418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1938606937853984158, guid: bed034c3d7be10f43bc4b6952f0492ab, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1938606937853984158, guid: bed034c3d7be10f43bc4b6952f0492ab, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4518,7 +4518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1938606939386534166, guid: bed034c3d7be10f43bc4b6952f0492ab, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 44.7
       objectReference: {fileID: 0}
     - target: {fileID: 1938606939386534166, guid: bed034c3d7be10f43bc4b6952f0492ab, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -12583,13 +12583,40 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4042776929948296022, guid: 64faf37a311cfc94bbe2ad397902a695, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1642554909}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4822380093525838611, guid: 64faf37a311cfc94bbe2ad397902a695, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1209019310}
   m_SourcePrefab: {fileID: 100100000, guid: 64faf37a311cfc94bbe2ad397902a695, type: 3}
 --- !u!4 &1209019308 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4042776929948296022, guid: 64faf37a311cfc94bbe2ad397902a695, type: 3}
   m_PrefabInstance: {fileID: 1209019307}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1209019309 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4822380093525838611, guid: 64faf37a311cfc94bbe2ad397902a695, type: 3}
+  m_PrefabInstance: {fileID: 1209019307}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1209019310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209019309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0770a40f5f23949a326bcfd2415251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sanity: 100
+  currentSanity: 0
+  timer: 90
+  lightIntensity: 0
+  isTouching: 0
+  bearMoveSpeed: 3
+  retreatTimer: 30
 --- !u!1001 &1215952111
 PrefabInstance:
   m_ObjectHideFlags: 0
