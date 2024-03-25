@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum BearState
@@ -12,13 +14,15 @@ public enum BearState
 
 public class BearController : MonoBehaviour
 {
-    public int sanity = 100;
-    public int currentSanity;
-    public float timer = 90f;
+    //GameObject playerChar;
+    playerController playerCon; 
+
+    public float startingTimer = 90f;
     public float lightIntensity;
-    public bool isTouching;
+    public bool isTouching = false;
     public float bearMoveSpeed = 3f;
     public float retreatTimer = 30f;
+
 
     private BearState currentState = BearState.BearSpawn;
     private Transform player;
@@ -26,18 +30,19 @@ public class BearController : MonoBehaviour
 
     void Start()
     {
+        playerCon = GetComponent<playerController>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
-        timer -= Time.deltaTime;
-        currentSanity = Mathf.Clamp(sanity, 0, 100);
+        startingTimer -= Time.deltaTime;
+        playerCon.sanity = playerCon.currentSanity;
 
         switch (currentState)
         {
             case BearState.BearSpawn:
-                if (currentSanity < 85 || timer <= 0)
+                if (playerCon.currentSanity < 85 || startingTimer <= 0)
                 {
                     currentState = BearState.BearStalk;
                 }
@@ -64,15 +69,16 @@ public class BearController : MonoBehaviour
                 break;
 
             case BearState.BearChase:
-                if (lightIntensity < 3.0f && currentSanity < 30)
+                if (lightIntensity < 3.0f && playerCon.currentSanity < 30)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, player.position, bearMoveSpeed * Time.deltaTime);
-                    if (currentSanity < 30)
+                    if (playerCon.currentSanity < 30)
                     {
                         currentState = BearState.BearKill;
                     }
                     else
                     {
+                        playerCon.sanity = playerCon.currentSanity;
                         currentState = BearState.BearRetreat;
                         retreatStartTime = Time.time;
                     }
@@ -83,7 +89,7 @@ public class BearController : MonoBehaviour
                 transform.position -= transform.forward * bearMoveSpeed * Time.deltaTime;
                 if (Time.time - retreatStartTime >= retreatTimer)
                 {
-                    if (currentSanity > sanity)
+                    if (playerCon.currentSanity <= playerCon.sanity)
                     {
                         currentState = BearState.BearStalk;
                     }
@@ -104,4 +110,14 @@ public class BearController : MonoBehaviour
                 break;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isTouching = true;
+        }
+        else isTouching = false;
+    }
+
 }
