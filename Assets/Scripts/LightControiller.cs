@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class lightController : MonoBehaviour
+public class LightControiller : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

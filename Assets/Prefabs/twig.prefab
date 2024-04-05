@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1850435645355672360}
-  - component: {fileID: 334704416787393706}
   - component: {fileID: 3480788923418547496}
   - component: {fileID: 1978552923295467027}
   - component: {fileID: 4180192433550400423}
   - component: {fileID: 7112723590140279434}
   - component: {fileID: 3086205526439774518}
   - component: {fileID: 9075812506122294382}
+  - component: {fileID: 688683050822707400}
   m_Layer: 0
   m_Name: twig
   m_TagString: Item
@@ -38,14 +38,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &334704416787393706
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4762750971549508650}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &3480788923418547496
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -309,3 +301,11 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!33 &688683050822707400
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4762750971549508650}
+  m_Mesh: {fileID: 1692275947763253415, guid: c091e6e2fe90bfe49ad0363e9655f316, type: 3}
