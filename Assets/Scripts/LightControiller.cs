@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class LightControiller : MonoBehaviour
 {
-    private Light light;
+    public Light light;
 
-    bool isTouching = false;
+    public float lightIntensity;
+
+    public bool isTouching = false;
+    public bool panic = false;
 
     public static int lightLifespan = 60000;
     private int lightHalfLife = lightLifespan / 2;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,11 +31,13 @@ public class LightControiller : MonoBehaviour
         if (isTouching)
         {
             light.intensity = 10.0f;
+            panic = false;
         }
 
 
         if (lightLifespan <= lightHalfLife && lightLifespan > 0)
         {
+            panic = true;
             light.intensity = 5.0f;
         }
         else if (lightLifespan <= 0)
@@ -41,7 +47,7 @@ public class LightControiller : MonoBehaviour
             //mainObject.SetActive(false);
             Destroy(gameObject, 0.1f);
         }
-
+        lightIntensity = light.intensity;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -50,7 +56,7 @@ public class LightControiller : MonoBehaviour
         {
             isTouching = true;
         }
-        //else isTouching= false;
+        else isTouching= false;
     }
 
 }

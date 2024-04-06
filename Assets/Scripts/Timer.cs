@@ -7,7 +7,7 @@ public class Timer : MonoBehaviour
 {
     public int currentHour = 10;
     public int currentMinute = 00;
-    string timeString = "10:00";
+    public string timeString = "10:00";
     public TextMeshPro textTimerBox;
 
     public int currentWorldTime;
