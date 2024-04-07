@@ -15,6 +15,8 @@ public enum BearState
 public class BearController : MonoBehaviour
 {
     //GameObject playerChar;
+
+    public GameObject Bear;
     SanityController sanity;
     Timer timer;
 
@@ -49,7 +51,9 @@ public class BearController : MonoBehaviour
             case BearState.BearSpawn:
                 if (sanity.currentSanity < 85.0f || timer.timeString == "11:30")
                 {
+                    Instantiate(Bear, new Vector3(0, 0, 0), Quaternion.identity);
                     currentState = BearState.BearStalk;
+                    //Debug.Log("Bear has spawned");
                 }
                 break;
 
@@ -59,6 +63,7 @@ public class BearController : MonoBehaviour
                 if (Vector3.Distance(transform.position, player.position) <= 30)
                 {
                     currentState = BearState.BearHunt;
+                    //Debug.Log("Bear is stalking");
                 }
                 break;
 
@@ -69,6 +74,7 @@ public class BearController : MonoBehaviour
                     if (Vector3.Distance(transform.position, player.position) <= 15)
                     {
                         currentState = BearState.BearChase;
+                        //Debug.Log("Bear is hunting");
                     }
                 }
                 break;
