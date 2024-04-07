@@ -20,8 +20,8 @@ public class LightControiller : MonoBehaviour
     {
         //mainObject = transform.GetChild(0).gameObject;
         light = GetComponent<Light>();
-        light.intensity = 0.0f;
-        //light.enabled = false;
+        //light.intensity = 0.0f;
+        light.enabled = false;
     }
 
     // Update is called once per frame
@@ -30,6 +30,7 @@ public class LightControiller : MonoBehaviour
         lightLifespan--;
         if (isTouching)
         {
+            light.enabled = true;
             light.intensity = 10.0f;
             panic = false;
         }

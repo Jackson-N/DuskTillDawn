@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public enum BearState
 {
+    BearIdle,
     BearSpawn,
     BearStalk,
     BearHunt,
@@ -23,7 +24,7 @@ public class BearController : MonoBehaviour
 
     LightControiller light;
 
-    public float startingTimer = 90f;
+    //public float startingTimer = 90f;
     public bool isTouching = false;
     public float bearMoveSpeed = 3f;
     public float retreatTimer = 30f;
@@ -31,7 +32,7 @@ public class BearController : MonoBehaviour
     public float position;
 
 
-    public BearState currentState = BearState.BearSpawn;
+    public BearState currentState = BearState.BearIdle;
     private Transform player;
     private float retreatStartTime;
 
@@ -41,23 +42,28 @@ public class BearController : MonoBehaviour
         timer = GetComponent<Timer>();
         light = GetComponent<LightControiller>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        Bear = GameObject.FindGameObjectWithTag("Enemy");
     }
 
     void Update()
     {
-        startingTimer -= Time.deltaTime;
-
-        if (sanity.currentSanity < 85.0f || timer.timeString == "11:30")
-        {
-            Instantiate(Bear, new Vector3(0, 0, 0), Quaternion.identity);
-            currentState = BearState.BearSpawn;
-            //Debug.Log("Bear has spawned");
-        }
+        //startingTimer -= Time.deltaTime;
+        Debug.Log(currentState);
+        Debug.Log(timer.timeString);
         switch (currentState)
         {
+            case BearState.BearIdle:
+                if (sanity.currentSanity < 85.0f || timer.timeString == "11:30")
+                {
+                    Instantiate(Bear, new Vector3(-112.087f, 48.946f, 30.928f), Quaternion.identity);
+                    currentState = BearState.BearSpawn;
+                    //Debug.Log("Bear has spawned");
+                }
+            break;
+
             case BearState.BearSpawn:
-                transform.position = Vector3.MoveTowards(transform.position, player.position, bearMoveSpeed * Time.deltaTime);
-                if (Vector3.Distance(transform.position, player.position) <= 75)
+                Bear.transform.position = Vector3.MoveTowards(Bear.transform.position, player.position, bearMoveSpeed * Time.deltaTime);
+                if (Vector3.Distance(Bear.transform.position, player.position) <= 75)
                 {
                     currentState = BearState.BearStalk;
                     //Debug.Log("Bear is moving");
@@ -65,9 +71,9 @@ public class BearController : MonoBehaviour
             break;
 
             case BearState.BearStalk:
-                transform.LookAt(player.position);
-                transform.position += transform.forward * bearMoveSpeed * Time.deltaTime;
-                if (Vector3.Distance(transform.position, player.position) <= 50)
+                Bear.transform.LookAt(player.position);
+                Bear.transform.position += Bear.transform.forward * bearMoveSpeed * Time.deltaTime;
+                if (Vector3.Distance(Bear.transform.position, player.position) <= 50)
                 {
                     currentState = BearState.BearHunt;
                     //Debug.Log("Bear is stalking");
@@ -77,8 +83,8 @@ public class BearController : MonoBehaviour
             case BearState.BearHunt:
                 if (light.light.intensity < 5.5f)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, player.position, bearMoveSpeed * Time.deltaTime);
-                    if (Vector3.Distance(transform.position, player.position) <= 30)
+                    Bear.transform.position = Vector3.MoveTowards(Bear.transform.position, player.position, bearMoveSpeed * Time.deltaTime);
+                    if (Vector3.Distance(Bear.transform.position, player.position) <= 30)
                     {
                         currentState = BearState.BearChase;
                         //Debug.Log("Bear is hunting");
@@ -89,7 +95,7 @@ public class BearController : MonoBehaviour
             case BearState.BearChase:
                 if (light.light.intensity <= 3.0f && sanity.currentSanity <= 30)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, player.position, bearMoveSpeed * Time.deltaTime);
+                    Bear.transform.position = Vector3.MoveTowards(Bear.transform.position, player.position, bearMoveSpeed * Time.deltaTime);
                     if (sanity.currentSanity < 30)
                     {
                         currentState = BearState.BearKill;
@@ -104,7 +110,7 @@ public class BearController : MonoBehaviour
                 break;
 
             case BearState.BearRetreat:
-                transform.position -= transform.forward * bearMoveSpeed * Time.deltaTime;
+                Bear.transform.position -= Bear.transform.forward * bearMoveSpeed * Time.deltaTime;
                 if (Time.time - retreatStartTime >= retreatTimer)
                 {
                     if (sanity.currentSanity <= sanity.sanity)
@@ -119,7 +125,7 @@ public class BearController : MonoBehaviour
                 break;
 
             case BearState.BearKill:
-                transform.position = Vector3.MoveTowards(transform.position, player.position, bearMoveSpeed * Time.deltaTime);
+                Bear.transform.position = Vector3.MoveTowards(Bear.transform.position, player.position, bearMoveSpeed * Time.deltaTime);
                 if (isTouching)
                 {
                     // Implement game scene change to loseGameScene
@@ -130,7 +136,7 @@ public class BearController : MonoBehaviour
                 break;
         }
 
-        position = Vector3.Distance(transform.position, player.position);
+        position = Vector3.Distance(Bear.transform.position, player.position);
     }
 
     private void OnCollisionEnter(Collision collision)
