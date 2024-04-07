@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -50,6 +51,8 @@ public class Timer : MonoBehaviour
         {
             CancelInvoke("UpdateTime");
             Debug.Log("Game Over: Win");
+            //switch to win screen
+            SceneManager.LoadScene("GameWin");
         }
 
         if (currentMinute <= 9)

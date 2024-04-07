@@ -9,6 +9,8 @@ TagManager:
   - Light
   - Item
   - Component
+  - PlayButton
+  - QuitButton
   layers:
   - Default
   - TransparentFX

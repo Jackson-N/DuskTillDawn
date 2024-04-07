@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum BearState
 {
@@ -123,6 +124,7 @@ public class BearController : MonoBehaviour
                 {
                     // Implement game scene change to loseGameScene
                     Debug.Log("Player is caught! Game Over.");
+                    SceneManager.LoadScene("GameLose");
                     Destroy(gameObject);
                 }
                 break;
