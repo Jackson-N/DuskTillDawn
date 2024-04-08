@@ -19,7 +19,6 @@ public class Timer : MonoBehaviour
     {
         ParseTime(timeString);
         InvokeRepeating("UpdateTime", 0f, 1f); // Call UpdateTime every second
-
         textTimerBox = GetComponent<TextMeshPro>();
     }
 
@@ -66,6 +65,7 @@ public class Timer : MonoBehaviour
             textTimerBox.text = timeString;
         }
 
+        Debug.Log(timeString);
         
     }
 

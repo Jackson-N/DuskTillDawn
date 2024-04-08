@@ -24,13 +24,14 @@ public class BearController : MonoBehaviour
 
     LightControiller light;
 
-    //public float startingTimer = 90f;
+    public float startingTimer = 90f;
     public bool isTouching = false;
+
+    private bool hasSpawned = false;
     public float bearMoveSpeed = 3f;
     public float retreatTimer = 30f;
 
     public float position;
-
 
     public BearState currentState = BearState.BearIdle;
     private Transform player;
@@ -42,19 +43,33 @@ public class BearController : MonoBehaviour
         timer = GetComponent<Timer>();
         light = GetComponent<LightControiller>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        Bear = GameObject.FindGameObjectWithTag("Enemy");
+        //Bear = GameObject.FindGameObjectWithTag("Enemy");
     }
 
     void Update()
     {
-        //startingTimer -= Time.deltaTime;
-        Debug.Log(currentState);
-        Debug.Log(timer.timeString);
+        startingTimer -= Time.deltaTime;
+        /*
+        try
+        {
+            sanity.currentSanity = sanity.currentSanity;
+        }
+        catch
+        {
+            sanity.currentSanity = sanity.sanity;
+            Debug.Log("Null Reference Exception: Sanity value is not coming through. Setting sanity value to default.");
+        }
+        */
+
+        //Debug.Log(currentState);
+        //Debug.Log(timer.timeString);
+        
         switch (currentState)
         {
             case BearState.BearIdle:
-                if (sanity.currentSanity < 85.0f || timer.timeString == "11:30")
+                if ((sanity.currentSanity < 85.0f || startingTimer <= 0.0f) && !hasSpawned)
                 {
+                    hasSpawned = true;
                     Instantiate(Bear, new Vector3(-112.087f, 48.946f, 30.928f), Quaternion.identity);
                     currentState = BearState.BearSpawn;
                     //Debug.Log("Bear has spawned");
@@ -62,6 +77,7 @@ public class BearController : MonoBehaviour
             break;
 
             case BearState.BearSpawn:
+                StartCoroutine(WaitForSeconds(10.0f));
                 Bear.transform.position = Vector3.MoveTowards(Bear.transform.position, player.position, bearMoveSpeed * Time.deltaTime);
                 if (Vector3.Distance(Bear.transform.position, player.position) <= 75)
                 {
@@ -134,6 +150,15 @@ public class BearController : MonoBehaviour
                     Destroy(gameObject);
                 }
                 break;
+
+            default:
+                currentState = BearState.BearIdle;
+                break;
+        }
+
+        if (startingTimer <= 0.0f)
+        {
+            startingTimer = 0.0f;
         }
 
         position = Vector3.Distance(Bear.transform.position, player.position);
@@ -146,6 +171,11 @@ public class BearController : MonoBehaviour
             isTouching = true;
         }
         else isTouching = false;
+    }
+
+    public IEnumerator WaitForSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
     }
 
 }

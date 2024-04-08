@@ -6,7 +6,7 @@ public class SanityController : MonoBehaviour
 {
     public float sanity = 100.0f;
 
-    public float currentSanity;
+    public float currentSanity = 100.0f;
 
     BearController bear;
     LightControiller light;
