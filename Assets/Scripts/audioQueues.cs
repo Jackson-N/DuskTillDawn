@@ -31,20 +31,12 @@ public class audioQueues : MonoBehaviour
         audioSources[1] = GetComponent<AudioSource>();
         audioSources[2] = GetComponent<AudioSource>();
         audioSources[3] = GetComponent<AudioSource>();
+        audioSources[4] = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        try
-        {
-            bear.currentState = bear.currentState;
-        }
-        catch
-        {
-            bear.currentState = BearState.BearIdle;
-            Debug.Log("Null Reference Exception: Bear State is not set. Setting to BearIdle");
-        }
 
         //Debug.Log(bear.currentState);
         //check if bear has spawned
@@ -52,6 +44,7 @@ public class audioQueues : MonoBehaviour
         {
             //audioSources[0] = GetComponent<AudioSource>();
             audioSources[0].clip = audioClips[4];
+            Debug.Log("Audio Clip: " + audioClips[4] + " Playing");
             audioSources[0].Play();
             audioSources[0].Stop();
         }
@@ -61,6 +54,7 @@ public class audioQueues : MonoBehaviour
         {
             //audioSources[3] = GetComponent<AudioSource>();
             audioSources[3].clip = audioClips[3];
+            Debug.Log("Audio Clip: " + audioClips[3] + " Playing");
             audioSources[3].Play();
             audioSources[3].Stop();
         }
@@ -70,6 +64,7 @@ public class audioQueues : MonoBehaviour
         {
             //audioSources[3] = GetComponent<AudioSource>();
             audioSources[3].clip = audioClips[2];
+            Debug.Log("Audio Clip: " + audioClips[2] + " Playing");
             audioSources[3].Play();
             audioSources[3].Stop();
         }
@@ -79,6 +74,7 @@ public class audioQueues : MonoBehaviour
         {
             //audioSources[3] = GetComponent<AudioSource>();
             audioSources[3].clip = audioClips[1];
+            Debug.Log("Audio Clip: " + audioClips[1] + " Playing");
             audioSources[3].Play();
             audioSources[3].Stop();
         }
@@ -88,6 +84,7 @@ public class audioQueues : MonoBehaviour
         {
             //audioSources[2] = GetComponent<AudioSource>();
             audioSources[2].clip = audioClips[7];
+            Debug.Log("Audio Clip: " + audioClips[7] + " Playing");
             audioSources[2].Play();
             audioSources[2].Stop();
         }
@@ -97,14 +94,19 @@ public class audioQueues : MonoBehaviour
         {
             //audioSources[2] = GetComponent<AudioSource>();
             audioSources[2].clip = audioClips[6];
+            audioSources[4].clip = audioClips[6];
+            Debug.Log("Audio Clip: " + audioClips[6] + " Playing");
             audioSources[2].Play();
+            audioSources[4].Play();
             audioSources[2].Stop();
+            audioSources[4].Stop();
         }
 
         if (bear.currentState == BearState.BearHunt)
         {
             //audioSources[1] = GetComponent<AudioSource>();
             audioSources[1].clip = audioClips[5];
+            Debug.Log("Audio Clip: " + audioClips[5] + " Playing");
             audioSources[1].Play();
             audioSources[1].Stop();
         }

@@ -40,19 +40,19 @@ public class SanityController : MonoBehaviour
         }
 
         //check if player is near bear
-        if(bear.position < 30.0f)
+        if(bear.distance < 30.0f)
         {
             currentSanity -= 1.5f;
         }
-        else if(bear.position < 15.0f)
+        else if(bear.distance < 15.0f)
         {
             currentSanity -= 2.0f;
         }
-        else if(bear.position < 10.0f)
+        else if(bear.distance < 10.0f)
         {
             currentSanity -= 2.5f;
         }
-        else if(bear.position < 5.0f)
+        else if(bear.distance < 5.0f)
         {
             currentSanity -= 3.0f;
         }

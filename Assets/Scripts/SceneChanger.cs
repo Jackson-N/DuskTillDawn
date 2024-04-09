@@ -6,16 +6,20 @@ using UnityEngine.UI;
 public class SceneChanger : MonoBehaviour
 {
 
-    public Transform player;
+    public Transform anchorPoint;
 
-    public GameObject button;
+    SceneTransition sceneTransition;
+
+    private GameObject vhsTape;
+    int sceneIndex = 0;
 
     private bool isTouching = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        anchorPoint = GameObject.FindGameObjectWithTag("Anchor").transform;
+        sceneTransition = GameObject.FindGameObjectWithTag("TransitionManager").GetComponent<SceneTransition>();
     }
 
     // Update is called once per frame
@@ -23,13 +27,13 @@ public class SceneChanger : MonoBehaviour
     {
         if(isTouching)
         {
-            SceneManager.LoadScene("GameScene");
+            sceneTransition.GoToSceneAsync(sceneIndex);
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Anchor"))
         {
             isTouching = true;
         }

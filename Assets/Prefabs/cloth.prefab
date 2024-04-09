@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6317218656568083991}
   m_Layer: 0
   m_Name: cloth
-  m_TagString: Item
+  m_TagString: Component
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

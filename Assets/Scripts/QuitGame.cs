@@ -6,7 +6,7 @@ public class QuitGame : MonoBehaviour
 {
     public Transform player;
 
-    public GameObject button;
+    private GameObject vhsTape;
 
     private bool isTouching = false;
 

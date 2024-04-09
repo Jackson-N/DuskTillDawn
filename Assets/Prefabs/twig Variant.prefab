@@ -75,10 +75,14 @@ PrefabInstance:
     - target: {fileID: 4180192433550400423, guid: 071b81d15254b6640841da6bf56d2f9e, type: 3}
       propertyPath: candleMaker
       value: 
-      objectReference: {fileID: 1004646437710004000, guid: a42ccdfb9a09f9448897ef1318b6e911, type: 3}
+      objectReference: {fileID: 6865394055475297588, guid: 9ce7e65a840421947a2d80f4637f5edd, type: 3}
     - target: {fileID: 4762750971549508650, guid: 071b81d15254b6640841da6bf56d2f9e, type: 3}
       propertyPath: m_Name
       value: twig Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4762750971549508650, guid: 071b81d15254b6640841da6bf56d2f9e, type: 3}
+      propertyPath: m_TagString
+      value: Component
       objectReference: {fileID: 0}
     - target: {fileID: 9075812506122294382, guid: 071b81d15254b6640841da6bf56d2f9e, type: 3}
       propertyPath: m_InteractionLayers.m_Bits
