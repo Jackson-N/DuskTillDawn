@@ -3,12 +3,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SceneChanger : MonoBehaviour
+public class GameSceneChanger : MonoBehaviour
 {
 
     public Transform anchorPoint;
 
-    SceneTransition sceneTransition;
+    public SceneTransition sceneTransition;
 
     private GameObject vhsTape;
     int sceneIndex = 0;
@@ -19,7 +19,7 @@ public class SceneChanger : MonoBehaviour
     void Start()
     {
         anchorPoint = GameObject.FindGameObjectWithTag("Anchor").transform;
-        sceneTransition = GameObject.FindGameObjectWithTag("TransitionManager").GetComponent<SceneTransition>();
+        sceneTransition = GameObject.FindGameObjectWithTag("Anchor").GetComponent<SceneTransition>();
     }
 
     // Update is called once per frame
@@ -27,7 +27,8 @@ public class SceneChanger : MonoBehaviour
     {
         if(isTouching)
         {
-            sceneTransition.GoToSceneAsync(sceneIndex);
+            Debug.Log("Touching Anchor, changing scene...");
+            sceneTransition.GoToSceneAsync(0);
         }
     }
 

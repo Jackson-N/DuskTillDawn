@@ -4,33 +4,46 @@ using UnityEngine;
 
 public class QuitGame : MonoBehaviour
 {
-    public Transform player;
+    public Transform anchorPoint;
 
     private GameObject vhsTape;
 
     private bool isTouching = false;
 
-    // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        anchorPoint = GameObject.FindGameObjectWithTag("Anchor").transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(isTouching)
+        if(isTouching == true)
         {
-            Application.Quit();
+            Debug.Log("Touching Anchor, Quitting game...");
+            Quit();
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Anchor"))
         {
             isTouching = true;
         }
         else isTouching = false;
     }
+
+    public void Quit()
+    {
+        StartCoroutine(QuitProgram());
+        //return true;
+    }
+
+    IEnumerator QuitProgram()
+    {
+        yield return new WaitForSeconds(5);
+        Application.Quit();
+    }
+
+
 }
