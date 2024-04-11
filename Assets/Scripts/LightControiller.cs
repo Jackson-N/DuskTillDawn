@@ -20,7 +20,7 @@ public class LightControiller : MonoBehaviour
     void Start()
     {
         //mainObject = transform.GetChild(0).gameObject;
-        light = GetComponent<Light>();
+        //light = GetComponent<Light>();
         //light.intensity = 0.0f;
         light.enabled = false;
     }

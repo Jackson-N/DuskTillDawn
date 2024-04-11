@@ -75,7 +75,7 @@ PrefabInstance:
     - target: {fileID: 4180192433550400423, guid: 071b81d15254b6640841da6bf56d2f9e, type: 3}
       propertyPath: candleMaker
       value: 
-      objectReference: {fileID: 6865394055475297588, guid: 9ce7e65a840421947a2d80f4637f5edd, type: 3}
+      objectReference: {fileID: 3093754556644047990, guid: e0fb780e9b0ebf84d9c1c50c2dbd3cb2, type: 3}
     - target: {fileID: 4762750971549508650, guid: 071b81d15254b6640841da6bf56d2f9e, type: 3}
       propertyPath: m_Name
       value: twig Variant
