@@ -36,12 +36,13 @@ public class LightDetection : MonoBehaviour
             isNearLight = true;
 
             // Return the light intensity
-            return isNearLight;
+            //return isNearLight;
         }
         else
         {
             isNearLight = false;
-            return isNearLight;
+            //return isNearLight;
         }
+        return isNearLight;
     }
 }
