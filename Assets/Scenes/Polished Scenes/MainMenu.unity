@@ -1161,6 +1161,7 @@ GameObject:
   - component: {fileID: 1521327022}
   - component: {fileID: 1521327021}
   - component: {fileID: 1521327023}
+  - component: {fileID: 1521327024}
   m_Layer: 0
   m_Name: Title
   m_TagString: Untagged
@@ -1335,6 +1336,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMesh: {fileID: 1521327021}
+--- !u!114 &1521327024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521327019}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ac640ed2ff0194682a1ccbd9c8d055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anchorPoint: {fileID: 0}
+  sceneTransition: {fileID: 0}
 --- !u!1 &1628858391
 GameObject:
   m_ObjectHideFlags: 0
@@ -2835,6 +2850,10 @@ PrefabInstance:
       propertyPath: anchorPoint
       value: 
       objectReference: {fileID: 1640785175}
+    - target: {fileID: 4422465357890360827, guid: 367984ce661690f43a80174285216064, type: 3}
+      propertyPath: sceneTransition
+      value: 
+      objectReference: {fileID: 1521327023}
     - target: {fileID: 7324350085856217221, guid: 367984ce661690f43a80174285216064, type: 3}
       propertyPath: respawnPoint
       value: 

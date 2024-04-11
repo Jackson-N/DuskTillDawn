@@ -149,6 +149,7 @@ MonoBehaviour:
   - {fileID: 8862234342311516551}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   audioClips:
   - {fileID: 8300000, guid: aa2f9bfe7b8964541a1f0bc51423d036, type: 3}
   - {fileID: 8300000, guid: 0842f85664963334a88ee2aaf793c98d, type: 3}
@@ -187,14 +188,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bear: {fileID: 0}
-  startingTimer: 90
+  bearRb: {fileID: 0}
   isTouching: 0
   bearMoveSpeed: 3
   retreatTimer: 30
   distance: 0
-  bearPosX: 0
-  bearPosY: 0
-  bearPosZ: 0
   currentState: 0
   timeSinceLastMove: 0
 --- !u!1 &7013091801074261070
@@ -211,6 +209,10 @@ GameObject:
   - component: {fileID: 6899561740650233674}
   - component: {fileID: 1968256822828929131}
   - component: {fileID: -4646025963604242821}
+  - component: {fileID: -6911655641058833855}
+  - component: {fileID: -6975266383564349160}
+  - component: {fileID: -4435043129978940410}
+  - component: {fileID: 565936234971611738}
   m_Layer: 0
   m_Name: Bear 1
   m_TagString: Enemy
@@ -428,3 +430,71 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-6911655641058833855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7013091801074261070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0770a40f5f23949a326bcfd2415251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bear: {fileID: 7013091801074261070}
+  bearRb: {fileID: 1968256822828929131}
+  isTouching: 0
+  bearMoveSpeed: 3
+  retreatTimer: 30
+  distance: 0
+  currentState: 1
+  timeSinceLastMove: 0
+--- !u!114 &-6975266383564349160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7013091801074261070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85ec2af4edd3614f8c12230644cfdb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSource: {fileID: 3093754556644047990, guid: e0fb780e9b0ebf84d9c1c50c2dbd3cb2, type: 3}
+  subject: {fileID: 7013091801074261070}
+  isNearLight: 0
+  detectionDistance: 5
+--- !u!114 &-4435043129978940410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7013091801074261070}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a84944fdadeeb4499c56673fca6f1b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingTimer: 90
+  bearPosX: 0
+  bearPosY: 0
+  bearPosZ: 0
+  hasSpawned: 0
+  BearPrefab: {fileID: 7013091801074261070}
+--- !u!114 &565936234971611738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7013091801074261070}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd8ac2515f1f78f4793c76a89b31998b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sanity: 100
+  currentSanity: 100

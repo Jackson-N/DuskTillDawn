@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
 
 public enum BearState
 {
@@ -18,15 +19,19 @@ public class BearController : MonoBehaviour
 {
     //GameObject playerChar;
 
-    public GameObject Bear;
+    [SerializeField] private GameObject Bear;
+    //private NavMeshAgent navMeshAgent;
+
+    public Rigidbody bearRb;
+
     SanityController sanity;
     Timer timer;
 
     LightDetection detection;
 
-    LightControiller light;
+    BearSpawer bearSpawner;
 
-    public float startingTimer = 90f;
+    LightControiller light;
     public bool isTouching = false;
 
     private bool hasSpawned = false;
@@ -35,12 +40,9 @@ public class BearController : MonoBehaviour
 
     public float distance;
 
-    public float bearPosX;
-    public float bearPosY;
-    public float bearPosZ;
-
     public BearState currentState = BearState.BearIdle;
     private Transform player;
+    //private Transform retreatPos;
 
     private Vector3 lastPosition;
     public float timeSinceLastMove = 0.0f;
@@ -48,37 +50,39 @@ public class BearController : MonoBehaviour
 
     void Start()
     {
+        //Bear = GameObject.FindGameObjectWithTag("Enemy");
         sanity = GetComponent<SanityController>();
         timer = GetComponent<Timer>();
         light = GetComponent<LightControiller>();
         detection = GetComponent<LightDetection>();
+        bearSpawner = GetComponent<BearSpawer>();
+        //navMeshAgent = GetComponent<NavMeshAgent>();
+        //find player tag
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        //Bear = GameObject.FindGameObjectWithTag("Enemy");
+        bearRb = GetComponent<Rigidbody>();
+        //retreatPos.position = new Vector3(bearSpawner.bearPosX, bearSpawner.bearPosY, bearSpawner.bearPosZ);
     }
 
     void Update()
     {
-        bearPosX = transform.position.x;
-        bearPosY = transform.position.y;
-        bearPosZ = transform.position.z;
-
-        startingTimer -= Time.deltaTime;
         //checks current bear's position
-        Bear.transform.position = transform.position + new Vector3(bearPosX, bearPosY, bearPosZ);
         //checks distance between player and bear
-        distance = Vector3.Distance(Bear.transform.position, player.position);
-        
-
         //Debug.Log("Bear State: " + currentState);
         switch (currentState)
         {
             case BearState.BearIdle:
-                if ((sanity.currentSanity < 85.0f || startingTimer <= 0.0f) && !hasSpawned)
+                if (sanity.currentSanity < 85.0f || bearSpawner.hasSpawned == true)
                 {
+                    Debug.Log("Bear state is idle");
                     hasSpawned = true;
-                    Instantiate(Bear, new Vector3(bearPosX, bearPosY, bearPosZ), Quaternion.identity);
-                    currentState = BearState.BearSpawn;
+                    //bearSpawner.SpawnBear();
+                    Debug.Log("Bear has spawned");
+                    Bear = GameObject.FindGameObjectWithTag("Enemy");
+                    Debug.Log("Bear has been tagged");
+                    Bear.transform.position = new Vector3(bearSpawner.bearPosX, bearSpawner.bearPosY, bearSpawner.bearPosZ);
+                    distance = Vector3.Distance(Bear.transform.position, player.transform.position);
                     //Debug.Log("Bear has spawned");
+                    currentState = BearState.BearSpawn;
                 }
                 else if (hasSpawned)
                 {
@@ -88,9 +92,21 @@ public class BearController : MonoBehaviour
 
             case BearState.BearSpawn:
                 //wait for 10 seconds before moving
-                CheckMovement();
-                Bear.transform.LookAt(player.position);
-                Bear.transform.position += Vector3.MoveTowards(Bear.transform.position, player.position, bearMoveSpeed * Time.deltaTime);
+                //CheckMovement();
+                if (player != null)
+                {
+                    Bear = GameObject.FindGameObjectWithTag("Enemy");
+                    Debug.Log("Bear has been tagged");
+                    Bear.transform.position = new Vector3(bearSpawner.bearPosX, bearSpawner.bearPosY, bearSpawner.bearPosZ);
+                    distance = Vector3.Distance(Bear.transform.position, player.transform.position);
+                    Debug.Log("Bear is spawning");
+                    Bear.transform.LookAt(player.transform);
+                    Debug.Log("Bear is looking at player");
+                    Bear.transform.position = Vector3.MoveTowards(Bear.transform.position, player.transform.position, bearMoveSpeed * Time.deltaTime);
+                    //navMeshAgent.SetDestination(player.position);
+                    Debug.Log("Bear is moving");
+                }
+                //Bear.transform.position += Vector3.MoveTowards(Bear.transform.position, player.position, bearMoveSpeed * Time.deltaTime);
                 if (distance <= 75.0f)
                 {
                     currentState = BearState.BearStalk;
@@ -100,8 +116,8 @@ public class BearController : MonoBehaviour
 
             case BearState.BearStalk:
                 CheckMovement();
-                Bear.transform.LookAt(player.position);
-                Bear.transform.position += Vector3.MoveTowards(Bear.transform.position, player.position, bearMoveSpeed * Time.deltaTime);
+                Bear.transform.LookAt(player.transform.position);
+                Bear.transform.position += Vector3.MoveTowards(Bear.transform.position, player.transform.position, bearMoveSpeed * Time.deltaTime);
                 if (distance <= 50.0f)
                 {
                     currentState = BearState.BearHunt;
@@ -113,12 +129,16 @@ public class BearController : MonoBehaviour
                 CheckMovement();
                 if (light.light.intensity < 5.5f)
                 {
-                    Bear.transform.position = Vector3.MoveTowards(Bear.transform.position, player.position, bearMoveSpeed * Time.deltaTime);
+                    Bear.transform.position = Vector3.MoveTowards(Bear.transform.position, player.transform.position, bearMoveSpeed * Time.deltaTime);
                     if (distance <= 30.0f)
                     {
                         currentState = BearState.BearChase;
                         //Debug.Log("Bear is hunting");
                     }
+                }
+                else
+                {
+                    currentState = BearState.BearStalk;
                 }
                 break;
 
@@ -126,7 +146,7 @@ public class BearController : MonoBehaviour
                 CheckMovement();
                 if (light.light.intensity <= 3.0f && sanity.currentSanity <= 30.0f)
                 {
-                    Bear.transform.position += Vector3.MoveTowards(Bear.transform.position, player.position, bearMoveSpeed * Time.deltaTime);
+                    Bear.transform.position += Vector3.MoveTowards(Bear.transform.position, player.transform.position, bearMoveSpeed * Time.deltaTime);
                     if (sanity.currentSanity < 30.0f && detection.isNearLight == false)
                     {
                         currentState = BearState.BearKill;
@@ -158,7 +178,7 @@ public class BearController : MonoBehaviour
                 break;
 
             case BearState.BearKill:
-                Bear.transform.position = Vector3.MoveTowards(Bear.transform.position, player.position, bearMoveSpeed * Time.deltaTime);
+                Bear.transform.position = Vector3.MoveTowards(Bear.transform.position, player.transform.position, bearMoveSpeed * Time.deltaTime);
                 if (isTouching)
                 {
                     // Implement game scene change to loseGameScene
@@ -173,10 +193,6 @@ public class BearController : MonoBehaviour
                 break;
         }
 
-        if (startingTimer <= 0.0f)
-        {
-            startingTimer = 0.0f;
-        }
         if (retreatStartTime <= 0.0f)
         {
             retreatStartTime = 0.0f;
@@ -211,7 +227,7 @@ public class BearController : MonoBehaviour
             if (timeSinceLastMove >= retreatTimer)
             {
                 Destroy(GameObject.FindGameObjectWithTag("Enemy"));
-                Instantiate(Bear, new Vector3(bearPosX, bearPosY, bearPosZ), Quaternion.identity);
+                bearSpawner.SpawnBear();
                 timeSinceLastMove = 0.0f;
             }
         }
