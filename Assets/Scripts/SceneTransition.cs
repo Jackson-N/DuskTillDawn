@@ -9,6 +9,11 @@ public class SceneTransition : MonoBehaviour
     //public FadeScreen fadeScreen;
     public TextMeshPro textMesh;
 
+    public void Start()
+    {
+        textMesh = GetComponent<TextMeshPro>();
+    }
+
     public void GoToSceneAsync(int sceneIndex)
     {
         StartCoroutine(GoToSceneAsyncRoutine(sceneIndex));

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class QuitGame : MonoBehaviour
 {
-    public Transform anchorPoint;
+    public Transform qgTape;
 
     private GameObject vhsTape;
 
@@ -12,37 +12,38 @@ public class QuitGame : MonoBehaviour
 
     void Start()
     {
-        anchorPoint = GameObject.FindGameObjectWithTag("Anchor").transform;
+        qgTape = GameObject.FindGameObjectWithTag("Component").transform;
     }
 
+    /*
     void Update()
     {
         if(isTouching == true)
         {
             Debug.Log("Touching Anchor, Quitting game...");
             Quit();
+            Debug.Log("Game Quit");
         }
     }
+    */
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Anchor"))
+        if (collision.gameObject.CompareTag("QuitButton"))
         {
+            Debug.Log("Touching Tape...");
             isTouching = true;
+            Debug.Log(isTouching);
         }
         else isTouching = false;
     }
 
     public void Quit()
     {
-        StartCoroutine(QuitProgram());
-        //return true;
-    }
-
-    IEnumerator QuitProgram()
-    {
-        yield return new WaitForSeconds(5);
+        Debug.Log("Touching Tape, Quitting game...");
+        UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
+        Debug.Log("Game Quit");
     }
 
 

@@ -11,6 +11,7 @@ TagManager:
   - Component
   - PlayButton
   - QuitButton
+  - Floor
   layers:
   - Default
   - TransparentFX

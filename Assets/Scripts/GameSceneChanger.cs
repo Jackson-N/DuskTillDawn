@@ -13,7 +13,7 @@ public class GameSceneChanger : MonoBehaviour
     private GameObject vhsTape;
     int sceneIndex = 0;
 
-    private bool isTouching = false;
+    public static bool isTouching = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,8 @@ public class GameSceneChanger : MonoBehaviour
         if(isTouching)
         {
             Debug.Log("Touching Anchor, changing scene...");
-            sceneTransition.GoToSceneAsync(0);
+            ChangeScene();
+            Debug.Log("Scene Changed");
         }
     }
 
@@ -39,5 +40,15 @@ public class GameSceneChanger : MonoBehaviour
             isTouching = true;
         }
         else isTouching = false;
+        Debug.Log(isTouching);
+    }
+
+    public bool ChangeScene()
+    {
+        bool isChanging = false;
+        Debug.Log("Changing Scene...");
+        sceneTransition.GoToSceneAsync(0);
+        isChanging = true;
+        return isChanging;
     }
 }
