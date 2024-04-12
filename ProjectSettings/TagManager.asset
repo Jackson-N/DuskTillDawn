@@ -12,6 +12,8 @@ TagManager:
   - PlayButton
   - QuitButton
   - Floor
+  - RightHand
+  - LeftHand
   layers:
   - Default
   - TransparentFX

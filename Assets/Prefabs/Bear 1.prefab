@@ -10,9 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 425438911796179247}
   - component: {fileID: 8862234342311516551}
-  - component: {fileID: 1278497752893328393}
-  - component: {fileID: 6142312316164953159}
-  - component: {fileID: 50921975157712822}
   m_Layer: 0
   m_Name: Bear AS
   m_TagString: Untagged
@@ -131,70 +128,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1278497752893328393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3700763190547112791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 589e29d3aee1d8144a8f0069e1afe76d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 3919863604224011905, guid: 62fdf88614b443945bee662741c12d29, type: 3}
-  audioSources:
-  - {fileID: 0}
-  - {fileID: 8862234342311516551}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  audioClips:
-  - {fileID: 8300000, guid: aa2f9bfe7b8964541a1f0bc51423d036, type: 3}
-  - {fileID: 8300000, guid: 0842f85664963334a88ee2aaf793c98d, type: 3}
-  - {fileID: 8300000, guid: e2274e92f559c414988635316f16102d, type: 3}
-  - {fileID: 8300000, guid: 81375c4435cc51f46be84eae1d1cca95, type: 3}
-  - {fileID: 8300000, guid: e0411451978ffc14eb944806e38c2bd4, type: 3}
-  - {fileID: 8300000, guid: aa0eac6af1196f644839dd7c7adb50ab, type: 3}
-  - {fileID: 8300000, guid: c2d680a4ee01eda43a8436d590a67393, type: 3}
-  - {fileID: 8300000, guid: 3758a45b4b30402489f41ef29ae93665, type: 3}
---- !u!114 &6142312316164953159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3700763190547112791}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab87a2ecd0e207f479baafa9489defbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  light: {fileID: 7680178723997665044, guid: 8c17728346585fc44ac2a153cbed6ef6, type: 3}
-  lightIntensity: 0
-  isTouching: 0
-  panic: 0
---- !u!114 &50921975157712822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3700763190547112791}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d0770a40f5f23949a326bcfd2415251, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Bear: {fileID: 0}
-  bearRb: {fileID: 0}
-  isTouching: 0
-  bearMoveSpeed: 3
-  retreatTimer: 30
-  distance: 0
-  currentState: 0
-  timeSinceLastMove: 0
 --- !u!1 &7013091801074261070
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,11 +141,11 @@ GameObject:
   - component: {fileID: 4257430522779143055}
   - component: {fileID: 6899561740650233674}
   - component: {fileID: 1968256822828929131}
-  - component: {fileID: -4646025963604242821}
   - component: {fileID: -6911655641058833855}
   - component: {fileID: -6975266383564349160}
   - component: {fileID: -4435043129978940410}
   - component: {fileID: 565936234971611738}
+  - component: {fileID: 6602756815716968675}
   m_Layer: 0
   m_Name: Bear 1
   m_TagString: Enemy
@@ -334,102 +267,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 1
---- !u!82 &-4646025963604242821
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7013091801074261070}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: aa0eac6af1196f644839dd7c7adb50ab, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &-6911655641058833855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,3 +335,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sanity: 100
   currentSanity: 100
+--- !u!114 &6602756815716968675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7013091801074261070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4c90948411afe488807bad39c42b23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 8862234342311516551}
+  audioClip: {fileID: 8300000, guid: aa0eac6af1196f644839dd7c7adb50ab, type: 3}

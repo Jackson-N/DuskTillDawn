@@ -11,7 +11,7 @@ public class itemScript : MonoBehaviour
     // Update is called once per frame
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Item"))
+        if (collision.gameObject.CompareTag("Component"))
         {
             isTouching = true;
             Destroy(gameObject);

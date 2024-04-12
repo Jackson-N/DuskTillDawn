@@ -29,7 +29,7 @@ public class SanityController : MonoBehaviour
             currentSanity = 100.0f;
         }
         //check if player is holding light
-        if(light.isTouching == true || light.lightIntensity > 0.0f)
+        if(light.isOn == true || light.lightIntensity > 0.0f)
         {
             currentSanity += 2.0f;
         }
