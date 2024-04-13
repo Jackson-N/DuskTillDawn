@@ -16082,7 +16082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4872696063905857125, guid: e0fb780e9b0ebf84d9c1c50c2dbd3cb2, type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LightOff
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4872696063905857125, guid: e0fb780e9b0ebf84d9c1c50c2dbd3cb2, type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -16090,7 +16090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4872696063905857125, guid: e0fb780e9b0ebf84d9c1c50c2dbd3cb2, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: LightOn
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4872696063905857125, guid: e0fb780e9b0ebf84d9c1c50c2dbd3cb2, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName

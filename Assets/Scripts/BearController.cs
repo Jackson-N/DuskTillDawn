@@ -127,7 +127,7 @@ public class BearController : MonoBehaviour
 
             case BearState.BearHunt:
                 CheckMovement();
-                if (light.light.intensity < 5.5f)
+                if (light.GetComponent<Light>().intensity < 5.5f)
                 {
                     Bear.transform.position = Vector3.MoveTowards(Bear.transform.position, player.transform.position, bearMoveSpeed * Time.deltaTime);
                     if (distance <= 30.0f)
@@ -144,7 +144,7 @@ public class BearController : MonoBehaviour
 
             case BearState.BearChase:
                 CheckMovement();
-                if (light.light.intensity <= 3.0f && sanity.currentSanity <= 30.0f)
+                if (light.GetComponent<Light>().intensity <= 3.0f && sanity.currentSanity <= 30.0f)
                 {
                     Bear.transform.position += Vector3.MoveTowards(Bear.transform.position, player.transform.position, bearMoveSpeed * Time.deltaTime);
                     if (sanity.currentSanity < 30.0f && detection.isNearLight == false)
