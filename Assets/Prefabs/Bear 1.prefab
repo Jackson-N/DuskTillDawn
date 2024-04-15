@@ -144,7 +144,6 @@ GameObject:
   - component: {fileID: -6911655641058833855}
   - component: {fileID: -6975266383564349160}
   - component: {fileID: -4435043129978940410}
-  - component: {fileID: 565936234971611738}
   - component: {fileID: 6602756815716968675}
   m_Layer: 0
   m_Name: Bear 1
@@ -161,8 +160,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7013091801074261070}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09966396, y: 0.8675226, z: -0.19327605, w: 0.4473433}
-  m_LocalPosition: {x: -218.796, y: 99.986, z: 57.98}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -280,6 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bear: {fileID: 7013091801074261070}
+  bearTransform: {fileID: 0}
   bearRb: {fileID: 1968256822828929131}
   isTouching: 0
   bearMoveSpeed: 3
@@ -315,26 +315,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a84944fdadeeb4499c56673fca6f1b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingTimer: 90
   bearPosX: 0
   bearPosY: 0
   bearPosZ: 0
+  spawnPos: {x: 0, y: 0, z: 0}
   hasSpawned: 0
-  BearPrefab: {fileID: 7013091801074261070}
---- !u!114 &565936234971611738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7013091801074261070}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd8ac2515f1f78f4793c76a89b31998b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sanity: 100
-  currentSanity: 100
 --- !u!114 &6602756815716968675
 MonoBehaviour:
   m_ObjectHideFlags: 0

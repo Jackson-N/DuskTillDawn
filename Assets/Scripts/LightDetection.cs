@@ -19,7 +19,7 @@ public class LightDetection : MonoBehaviour
     {
         lightSource = GameObject.FindGameObjectWithTag("Item");
         light = GetComponent<LightControiller>();
-        //subject = GameObject.FindGameObjectWithTag("Enemy");
+        subject = GameObject.FindGameObjectWithTag("Enemy");
     }
 
     // Update is called once per frame

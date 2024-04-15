@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class BearSpawer : MonoBehaviour
 {
-    public float startingTimer = 90f;
 
-    public float bearPosX;
-    public float bearPosY;
-    public float bearPosZ;
+    [SerializeField] public float bearPosX;
+    [SerializeField] public float bearPosY;
+    [SerializeField] public float bearPosZ;
+
+    public Vector3 spawnPos;
 
     public bool hasSpawned = false;
-
-    [SerializeField] private GameObject BearPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -20,33 +19,7 @@ public class BearSpawer : MonoBehaviour
         bearPosX = gameObject.transform.position.x;
         bearPosY = gameObject.transform.position.y;
         bearPosZ = gameObject.transform.position.z;
+        spawnPos = new Vector3(bearPosX, bearPosY, bearPosZ);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        startingTimer -= Time.deltaTime;
-
-        if (!hasSpawned)
-        {
-            if (startingTimer <= 0.0f)
-            {
-                startingTimer = 0.0f;
-                //SpawnBear();
-                hasSpawned = true;
-                Debug.Log("Bear has spawned");
-                SpawnBear();
-            }
-        }
-    }
-
-    public void SpawnBear()
-    {
-        if (startingTimer == 0.0f)
-        {
-            Instantiate(BearPrefab, new Vector3(bearPosX, bearPosY, bearPosZ), Quaternion.identity);
-            BearPrefab.transform.position = transform.position + new Vector3(bearPosX, bearPosY, bearPosZ);
-            //Debug.Log("Bear has spawned");
-        }
-    }
+    
 }

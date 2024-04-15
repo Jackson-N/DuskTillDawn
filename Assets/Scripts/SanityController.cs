@@ -5,17 +5,21 @@ using UnityEngine;
 public class SanityController : MonoBehaviour
 {
     public float sanity = 100.0f;
+    public float currentSanity;
 
-    public float currentSanity = 100.0f;
-
-    BearController bear;
-    LightControiller light;
+    private GameObject bearComponent;
+    private BearController bear;
+    private LightControiller light;
+    private GameObject lightComponent;
 
     // Start is called before the first frame update
     void Start()
     {
-        light = GetComponent<LightControiller>();
-        bear = GetComponent<BearController>();
+        lightComponent = GameObject.FindGameObjectWithTag("Light");
+        light = lightComponent.GetComponent<LightControiller>();
+
+        bearComponent = GameObject.FindGameObjectWithTag("Enemy");
+        bear = bearComponent.GetComponent<BearController>();
 
         currentSanity = sanity;
     }
@@ -23,6 +27,15 @@ public class SanityController : MonoBehaviour
     // Update is called once per frame
     void UpdateTime()
     {
+        
+        checkSanity();
+        //even if the player is doing well, sanity will ALWAYS decrease at a constant rate
+        currentSanity = currentSanity - 2.5f;
+    }
+
+    void checkSanity()
+    {
+        Debug.Log("Current Sanity: " + currentSanity);
         if(currentSanity > 100.0f)
         {
             //cap sanity at 100
@@ -56,8 +69,5 @@ public class SanityController : MonoBehaviour
         {
             currentSanity -= 3.0f;
         }
-
-        //even if the player is doing well, sanity will ALWAYS decrease at a constant rate
-        currentSanity -= 2.5f;
     }
 }
