@@ -26,7 +26,7 @@ public class SceneTransition : MonoBehaviour
         asyncLoad.allowSceneActivation = false;
 
         float timer = 0.0f;
-        while (timer <= 8.0f && !asyncLoad.isDone)
+        while (timer <= 7.0f && !asyncLoad.isDone)
         {
             timer += Time.deltaTime;
             if ((timer == 0.0f) || (timer == 4.0f))

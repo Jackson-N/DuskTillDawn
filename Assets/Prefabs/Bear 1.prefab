@@ -137,14 +137,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4066088622819579598}
-  - component: {fileID: 914503620352263104}
   - component: {fileID: 4257430522779143055}
-  - component: {fileID: 6899561740650233674}
   - component: {fileID: 1968256822828929131}
   - component: {fileID: -6911655641058833855}
   - component: {fileID: -6975266383564349160}
   - component: {fileID: -4435043129978940410}
   - component: {fileID: 6602756815716968675}
+  - component: {fileID: 6596356364568627133}
   m_Layer: 0
   m_Name: Bear 1
   m_TagString: Enemy
@@ -168,14 +167,6 @@ Transform:
   - {fileID: 425438911796179247}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &914503620352263104
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7013091801074261070}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &4257430522779143055
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -218,27 +209,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6899561740650233674
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7013091801074261070}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1968256822828929131
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -281,6 +251,8 @@ MonoBehaviour:
   Bear: {fileID: 7013091801074261070}
   bearTransform: {fileID: 0}
   bearRb: {fileID: 1968256822828929131}
+  sanity: {fileID: 0}
+  timer: {fileID: 0}
   isTouching: 0
   bearMoveSpeed: 3
   retreatTimer: 30
@@ -334,3 +306,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 8862234342311516551}
   audioClip: {fileID: 8300000, guid: aa0eac6af1196f644839dd7c7adb50ab, type: 3}
+--- !u!33 &6596356364568627133
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7013091801074261070}
+  m_Mesh: {fileID: -2432090755550338912, guid: 530037645f13ea147826c6f3e19c805d, type: 3}

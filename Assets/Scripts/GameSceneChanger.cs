@@ -11,7 +11,7 @@ public class GameSceneChanger : MonoBehaviour
     public SceneTransition sceneTransition;
 
     private GameObject vhsTape;
-    int sceneIndex = 0;
+    public int sceneIndex;
 
     public static bool isTouching = false;
 
@@ -47,7 +47,7 @@ public class GameSceneChanger : MonoBehaviour
     {
         bool isChanging = false;
         Debug.Log("Changing Scene...");
-        sceneTransition.GoToSceneAsync(0);
+        sceneTransition.GoToSceneAsync(sceneIndex);
         isChanging = true;
         return isChanging;
     }

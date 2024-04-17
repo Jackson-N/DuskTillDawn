@@ -12,10 +12,6 @@ public class LightControiller : MonoBehaviour
     public bool isOn = false;
     public bool panic;
     //public InputDevice Input
-    public InputDeviceCharacteristics leftControllerCharacteristics = InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
-    public InputDeviceCharacteristics rightControllerCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
-    public static List<InputDevice> devices;
-
     void Start()
     {
         light = GetComponentInChildren<Light>();
@@ -24,33 +20,6 @@ public class LightControiller : MonoBehaviour
     //ooga booga
     void Update()
     {
-        devices = new List<InputDevice>();
-        InputDevices.GetDevicesWithCharacteristics(leftControllerCharacteristics, devices);
-        InputDevices.GetDevicesWithCharacteristics(rightControllerCharacteristics, devices);
-        devices = new List<InputDevice>();
-
-        foreach (var device in devices)
-        {
-            if (device.TryGetFeatureValue(CommonUsages.primaryButton, out bool primaryButtonValue) && primaryButtonValue)
-            {
-                if (isOn)
-                {
-                    light.enabled = false;
-                    light.intensity = 0.0f;
-                    isOn = false;
-                    panic = true;
-                    Debug.Log("Light is off");
-                }
-                else
-                {
-                    light.enabled = true;
-                    light.intensity = 20.0f;
-                    isOn = true;
-                    panic = false;
-                    Debug.Log("Light is on");
-                }
-            }
-        }
         checkLight();
     }
 
