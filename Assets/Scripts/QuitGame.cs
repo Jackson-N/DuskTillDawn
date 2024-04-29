@@ -22,7 +22,6 @@ public class QuitGame : MonoBehaviour
         Debug.Log("Game Quit");
         Application.Quit();
         
-        
     }
 
 

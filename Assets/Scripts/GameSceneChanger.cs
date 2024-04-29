@@ -1,7 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using TMPro;
+using UnityEngine.Audio;
 
 public class GameSceneChanger : MonoBehaviour
 {
@@ -10,45 +12,40 @@ public class GameSceneChanger : MonoBehaviour
 
     public SceneTransition sceneTransition;
 
-    private GameObject vhsTape;
-    public int sceneIndex;
+    public AudioMixerSnapshot menuSnapshot;
+    public AudioMixerSnapshot loadingSnapshot;
 
-    public static bool isTouching = false;
+    private GameObject vhsTape;
+    //public int sceneIndex;
+
+    //public static bool isTouching = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        anchorPoint = GameObject.FindGameObjectWithTag("Anchor").transform;
-        sceneTransition = GameObject.FindGameObjectWithTag("Anchor").GetComponent<SceneTransition>();
+        sceneTransition = GameObject.FindGameObjectWithTag("VHS").GetComponent<SceneTransition>();
+        Highpass();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GameScene()
     {
-        if(isTouching)
-        {
-            Debug.Log("Touching Anchor, changing scene...");
-            ChangeScene();
-            Debug.Log("Scene Changed");
-        }
+        sceneTransition.isTouchingPlay = true;
+        sceneTransition.isTouchingQuit = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void QuitScene()
     {
-        if (collision.gameObject.CompareTag("Anchor"))
-        {
-            isTouching = true;
-        }
-        else isTouching = false;
-        Debug.Log(isTouching);
+        sceneTransition.isTouchingQuit = true;
+        sceneTransition.isTouchingPlay = false;
     }
 
-    public bool ChangeScene()
+    public void Lowpass()
     {
-        bool isChanging = false;
-        Debug.Log("Changing Scene...");
-        sceneTransition.GoToSceneAsync(sceneIndex);
-        isChanging = true;
-        return isChanging;
+        loadingSnapshot.TransitionTo(0.5f);
+    }
+
+    public void Highpass()
+    {
+        menuSnapshot.TransitionTo(0.5f);
     }
 }
