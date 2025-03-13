@@ -1,48 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LightDetection : MonoBehaviour
 {
-    // Reference to the light source
-    LightControiller light;
+    //check the distance from an object that is emitting light
+
+    public float distance;
+    [SerializeField] public int lightIntensity;
+    private float lightDistance;
     public GameObject lightSource;
+    //target is the object that has the script on it
+    public GameObject target;
+    private int lightSensLimit = 101;
+    //get the TextMesh component from a child object
+    public TextMeshPro lightSensDisplay;
 
-    public GameObject subject;
+    //public GameObject BearLD;
+    //public GameObject PlayerLD;
 
-    public bool isNearLight = false;
-
-    // Distance threshold for detecting light
-    public float detectionDistance = 5.0f;
+    //Update: check the distance from a gameObject (self) to another gameObject (lightSource)
 
     void Start()
     {
-        lightSource = GameObject.FindGameObjectWithTag("Item");
-        light = GetComponent<LightControiller>();
-        subject = GameObject.FindGameObjectWithTag("Enemy");
+        target = this.gameObject;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        checkLight();
+        //distance and lightIntensity are equal to each other for simplicity
+        distance = Vector3.Distance(lightSource.transform.position, target.transform.position);
+        //if there are multiple light sources, distnace will be equal to the closest light source
+        
+        lightIntensity = (int)distance;
+
+        //record distance from target to the lightSource, and display on a child Text object
+        if(lightSensDisplay != null)
+        {
+            if (lightIntensity > lightSensLimit)
+            {
+                lightSensDisplay.text = "Light Sensitivity: NA";
+            }
+            else
+            {
+                lightSensDisplay.text = "Light Sensitivity: " + lightIntensity.ToString();
+            }
+        }
+
+        
     }
 
-    bool checkLight()
-    {
-        if ((Vector3.Distance(subject.transform.position, lightSource.transform.position) <= detectionDistance) && (light.lightIntensity >= 3.0f))
-        {
-            // Get the light intensity at the gameObject's position
-            isNearLight = true;
 
-            // Return the light intensity
-            //return isNearLight;
-        }
-        else
-        {
-            isNearLight = false;
-            //return isNearLight;
-        }
-        return isNearLight;
-    }
+
+
+    
 }

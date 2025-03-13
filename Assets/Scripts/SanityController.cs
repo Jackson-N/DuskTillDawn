@@ -1,73 +1,64 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SanityController : MonoBehaviour
 {
-    public float sanity = 100.0f;
+    private float sanity = 100.0f;
     public float currentSanity;
+    private float sanityRate = 3.0f;
+    public float currentRate;
 
-    private GameObject bearComponent;
-    private BearController bear;
-    private LightControiller light;
-    private GameObject lightComponent;
+    public float distance;
 
-    // Start is called before the first frame update
-    void Start()
+    public BearScript bear;
+    public Transform bearPos;
+    public LightDetection lightDetection;
+    private GameObject player;
+
+    void Awake()
     {
-        lightComponent = GameObject.FindGameObjectWithTag("Light");
-        light = lightComponent.GetComponent<LightControiller>();
-
-        bearComponent = GameObject.FindGameObjectWithTag("Enemy");
-        bear = bearComponent.GetComponent<BearController>();
-
+        bearPos = bear.target.transform;
+        InvokeRepeating("UpdateTime", 0.0f, 1.0f);
         currentSanity = sanity;
+        currentRate = sanityRate;
+        player = this.gameObject;
+        distance = Vector3.Distance(bearPos.position, player.transform.position);
     }
 
-    // Update is called once per frame
     void UpdateTime()
     {
-        
         checkSanity();
-        //even if the player is doing well, sanity will ALWAYS decrease at a constant rate
-        currentSanity = currentSanity - 2.5f;
+        //Debug.Log("Sanity: " + currentSanity);
     }
 
     void checkSanity()
     {
-        Debug.Log("Current Sanity: " + currentSanity);
-        if(currentSanity > 100.0f)
+        currentSanity -= currentRate;
+        //checks variables such as bearPos and lightDetection
+        //check position from player to bear
+        if (currentSanity > sanity)
         {
-            //cap sanity at 100
-            currentSanity = 100.0f;
-        }
-        //check if player is holding light
-        if(light.isOn == true || light.lightIntensity > 0.0f)
-        {
-            currentSanity += 2.0f;
+            currentSanity = sanity;
         }
 
-        if(light.panic == true)
+        distance = Vector3.Distance(bearPos.position, player.transform.position);
+        if (distance > 75.0f && lightDetection.lightIntensity <= 2)
         {
-            currentSanity += 1.0f;
+            currentRate++;
+            currentSanity += currentRate * Time.deltaTime;
         }
-
-        //check if player is near bear
-        if(bear.distance < 30.0f)
+        else if (distance <= 75.0f && lightDetection.lightIntensity != 0)
         {
-            currentSanity -= 1.5f;
+            currentRate -= 2.0f;
+            
+            currentSanity -= currentRate * Time.deltaTime;
         }
-        else if(bear.distance < 15.0f)
+        else
         {
-            currentSanity -= 2.0f;
-        }
-        else if(bear.distance < 10.0f)
-        {
-            currentSanity -= 2.5f;
-        }
-        else if(bear.distance < 5.0f)
-        {
-            currentSanity -= 3.0f;
+            currentRate--;
+            currentSanity += currentRate * Time.deltaTime;
         }
     }
 }
