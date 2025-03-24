@@ -78,7 +78,7 @@ public class BearScript : MonoBehaviour
         attackDistance = 30.0f;
         fleeDistance = 100.0f;
         killDistance = 5.0f;
-        sanity = GetComponent<SanityController>();
+        //sanity = GetComponent<SanityController>();
         bearIdle();
     }
 
@@ -274,13 +274,14 @@ public class BearScript : MonoBehaviour
     {
         //bear runs away from player based on light intensity from LightDetection.cs
         //if the light intensity is higher than the flee distance value, the bear will run away from the player
-        sanityCheck = sanity.currentSanity;
+        //sanityCheck = sanity.currentSanity;
         Debug.Log("Sanity: " + sanityCheck);
+        sanityCheck = sanity.currentSanity;
 
         Vector3 distanceToPlayer = transform.position - player.transform.position;
         distanceToPlayer = distanceToPlayer.normalized;
 
-        if(lightDetection.lightIntensity >= fleeDistance && sanityCheck >= sanity.currentSanity)
+        if(lightDetection.lightIntensity >= fleeDistance || sanityCheck <= 30.0f)
         {
             //go to flee distance
             agent.SetDestination(transform.position - distanceToPlayer);    //NOTE: this works
