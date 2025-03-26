@@ -7,7 +7,7 @@ public class SanityController : MonoBehaviour
 {
     private float sanity = 100.0f;
     public float currentSanity;
-    private float sanityRate = 3.0f;
+    private float sanityRate = 1.0f;
     public float currentRate;
 
     public float distance;
@@ -46,14 +46,14 @@ public class SanityController : MonoBehaviour
         distance = Vector3.Distance(bearPos.position, player.transform.position);
         if (distance > 75.0f && lightDetection.lightIntensity <= 2)
         {
-            currentRate++;
-            currentSanity += currentRate * Time.deltaTime;
+            currentRate = 0.0f;
+            currentSanity -= currentRate * Time.deltaTime;
         }
         else if (distance <= 75.0f && lightDetection.lightIntensity != 0)
         {
-            currentRate -= 2.0f;
+            currentRate += 0.025f;
             
-            currentSanity -= currentRate * Time.deltaTime;
+            currentSanity += currentRate * Time.deltaTime;
         }
         else
         {

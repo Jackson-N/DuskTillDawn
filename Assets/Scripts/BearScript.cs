@@ -48,6 +48,7 @@ public class BearScript : MonoBehaviour
     private float time = 0.0f;
     public bool gameOver = false;
     [SerializeField] public GameObject target;
+    private float bearYRotation;
 
     public enum bearState
     {
@@ -91,6 +92,7 @@ public class BearScript : MonoBehaviour
             checkGround();
             checkBounds();
             checkIsStuck();
+            //checkAngle(); 
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -106,6 +108,10 @@ public class BearScript : MonoBehaviour
 
             //Debug.Log("Distance from player: " + Vector3.Distance(transform.position, player.transform.position));
             //Debug.Log("Light Intensity: " + lightDetection.lightIntensity);
+
+            //lock bear rotation to y-axis
+            //check rotation value of bear. if it is not 0, set it to 0
+            transform.LookAt(walkPoint);
         }
     }
 
@@ -149,10 +155,11 @@ public class BearScript : MonoBehaviour
     void checkIsStuck()
     {
         //check if the bear is stuck
-        if(agent.speed == 0.0f)
+        if(agent.speed <= 0.5f)
         {
             //set isStuck to true and move to a new walkpoint
             isStuck = true;
+            walkPointSet = false;
             bearStalk();
         }
         else isStuck = false;
@@ -169,6 +176,20 @@ public class BearScript : MonoBehaviour
         }
         else isInBounds = true;
         
+    }
+
+    void checkAngle()
+    {
+        //check the angle of the bear
+        //point the bear in the direction of the walkpoint
+        if(walkPointSet)
+        {
+            Vector3 direction = walkPoint - transform.position;
+            direction.y = 0;
+            bearYRotation = Quaternion.LookRotation(direction).eulerAngles.y;
+            transform.rotation = Quaternion.Euler(0, bearYRotation, 0);
+        }
+        Debug.Log(walkPointSet);
     }
 
     bool bearIdle()
@@ -208,14 +229,21 @@ public class BearScript : MonoBehaviour
             agent.SetDestination(walkPoint);
             if(distanceToWalkPoint.magnitude > 1f && !isStuck && isInBounds)
             {
+                //move forward
                 agent.SetDestination(walkPoint);
             }
             else if(distanceToWalkPoint.magnitude <= 1f && !isStuck && isInBounds)
             {
                 walkPointSet = true;
             }
+
+            //if the bear is in range of the walkpoint, set walkpointSet to false
+            //range should be 1f from the walkpoint
+            if(distanceToWalkPoint.magnitude <= 1f)
+            {
+                walkPointSet = false;
+            }  
         }
-        walkPointSet = false;
         canSetWalkPoint = true;
     }
 
@@ -233,7 +261,7 @@ public class BearScript : MonoBehaviour
         if (canSetWalkPoint)
         {
             //Debug.Log("Bear is grounded");
-            if (!Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround)) return;
+            //if (!Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround)) return;
             if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             {
                 //Debug.Log("Walkpoint found");
@@ -295,6 +323,8 @@ public class BearScript : MonoBehaviour
             agent.SetDestination(player.transform.position);
             sanity.currentRate++;
         }
+
+        checkIsStuck();
 
         //add sanity variable later
     }
