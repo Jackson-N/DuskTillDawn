@@ -830,15 +830,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5911052086899012969, guid: 426e33c75190f5946ad47ed7c7349597, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5911052086899012969, guid: 426e33c75190f5946ad47ed7c7349597, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.8238645
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5911052086899012969, guid: 426e33c75190f5946ad47ed7c7349597, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5911052086899012969, guid: 426e33c75190f5946ad47ed7c7349597, type: 3}
       propertyPath: m_LocalRotation.w
@@ -999,6 +999,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 0
   lightIntensity: 0
-  lightSource: {fileID: 677886276470036755, guid: 6606adff9adcf524fb19f5850340c100, type: 3}
+  lightSource: {fileID: 2194054578786200639, guid: 6606adff9adcf524fb19f5850340c100, type: 3}
   target: {fileID: 5190319402231337161}
   lightSensDisplay: {fileID: 0}

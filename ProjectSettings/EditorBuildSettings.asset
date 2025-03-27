@@ -26,7 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Polished Scenes/GameLose.unity
     guid: 67e816a257d83ae4c9d6edbb1c7efce6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Polished Scenes/MainMenu 1.unity
     guid: 9f3690508260b7f4db1954d336bd9b6a
   - enabled: 1
