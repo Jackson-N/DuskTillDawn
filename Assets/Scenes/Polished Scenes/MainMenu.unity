@@ -1570,7 +1570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7238405422369531643, guid: 339da0ed33a42d149b949614399fe279, type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7238405422369531643, guid: 339da0ed33a42d149b949614399fe279, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
@@ -1838,12 +1838,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147178553}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfdaaf7d12aa309408f1a32c4026aef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textMesh: {fileID: 1521327021}
+  textMesh: {fileID: 0}
+  playGameTape: {fileID: 3811559339253970069}
+  quitGameTape: {fileID: 821337482}
+  isHovering: 0
   isTouchingPlay: 0
   isTouchingQuit: 0
 --- !u!1001 &1643188710
@@ -2926,7 +2929,7 @@ PrefabInstance:
     - target: {fileID: 88370892226011299, guid: 367984ce661690f43a80174285216064, type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1640785178}
+      objectReference: {fileID: 1640785181}
     - target: {fileID: 88370892226011299, guid: 367984ce661690f43a80174285216064, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2953,7 +2956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 88370892226011299, guid: 367984ce661690f43a80174285216064, type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.Collider, UnityEngine
+      value: UnityEngine.Behaviour, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 88370892226011299, guid: 367984ce661690f43a80174285216064, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -2962,6 +2965,10 @@ PrefabInstance:
     - target: {fileID: 88370892226011299, guid: 367984ce661690f43a80174285216064, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UnityEngine.Collider, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 88370892226011299, guid: 367984ce661690f43a80174285216064, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 88370892226011299, guid: 367984ce661690f43a80174285216064, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
@@ -3071,12 +3078,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 367984ce661690f43a80174285216064, type: 3}
+--- !u!1 &3811559339253970069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1196949782768517726, guid: 367984ce661690f43a80174285216064, type: 3}
+  m_PrefabInstance: {fileID: 3811559339253970068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3811559339253970072 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4422465357890360827, guid: 367984ce661690f43a80174285216064, type: 3}
   m_PrefabInstance: {fileID: 3811559339253970068}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 3811559339253970069}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5ac640ed2ff0194682a1ccbd9c8d055, type: 3}
@@ -3198,7 +3210,7 @@ PrefabInstance:
     - target: {fileID: 7903300843247906375, guid: 71cb3fd20dade41448c8c759aa34b7d8, type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1640785178}
+      objectReference: {fileID: 1640785181}
     - target: {fileID: 7903300843247906375, guid: 71cb3fd20dade41448c8c759aa34b7d8, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -3241,11 +3253,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7903300843247906375, guid: 71cb3fd20dade41448c8c759aa34b7d8, type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.Collider, UnityEngine
+      value: UnityEngine.Behaviour, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7903300843247906375, guid: 71cb3fd20dade41448c8c759aa34b7d8, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UnityEngine.Collider, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7903300843247906375, guid: 71cb3fd20dade41448c8c759aa34b7d8, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7903300843247906375, guid: 71cb3fd20dade41448c8c759aa34b7d8, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument

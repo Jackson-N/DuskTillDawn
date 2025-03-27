@@ -4,19 +4,24 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Audio;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class SceneTransition : MonoBehaviour
 {
     //public FadeScreen fadeScreen;
     public TextMeshPro textMesh;
     public Collision collision;
+    public GameObject playGameTape;
+    public GameObject quitGameTape;
+    private GameObject self;
+    public bool isHovering;
+    public bool isTouchingPlay;
+    public bool isTouchingQuit;
 
-    public bool isTouchingPlay = false;
-    public bool isTouchingQuit = false;
-
-    public void Start()
+    void Start()
     {
-        textMesh = GetComponent<TextMeshPro>();
+        self = this.gameObject;
     }
 
     public void Update()
@@ -34,6 +39,7 @@ public class SceneTransition : MonoBehaviour
         //fadeScreen.FadeOut();
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneIndex);
         asyncLoad.allowSceneActivation = false;
+        textMesh.text = "Loading...";
 
         float timer = 0.0f;
         while (timer <= 7.0f && !asyncLoad.isDone)
@@ -50,14 +56,25 @@ public class SceneTransition : MonoBehaviour
     //check for if the object is touching either the play or quit button
     private void checkButton()
     {
-        if (isTouchingPlay == true && isTouchingQuit == false)
+        //check if the player is still holding the tape. if the player lets go of the tape, then run the code
+        
+        //check for the tape that is touching self
+        if(!isHovering)
         {
-            StartCoroutine(GoToSceneAsyncRoutine(0));
-        }
-        //GoToSceneAsync(0);
-        else if (isTouchingQuit == true && isTouchingPlay == false)
-        {
-            StartCoroutine(GoToSceneAsyncRoutine(4));
+            if (playGameTape.transform.position == self.transform.position)
+            
+            {
+                StartCoroutine(GoToSceneAsyncRoutine(3));
+            }
+            //GoToSceneAsync(0);
+            else if (quitGameTape.transform.position == self.transform.position)
+            {
+                //quit game
+
+                Application.Quit();
+                UnityEditor.EditorApplication.isPlaying = false;
+
+            }
         }
         //GoToSceneAsync(4);
     }
