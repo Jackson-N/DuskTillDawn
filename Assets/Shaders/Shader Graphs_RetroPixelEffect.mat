@@ -37,11 +37,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _PixelSize: 3
-    - _ScanlineAlpha: 0.05
+    - _PixelSize: 6
+    - _ScanlineAlpha: 0.25
     - _ScanlineAmount: 1
-    - _ScanlineSize: 0.001
-    - _ScanlineSpeed: 0.15
+    - _ScanlineSize: 0.0025
+    - _ScanlineSpeed: 0.1
     m_Colors:
     - _ScanlineColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

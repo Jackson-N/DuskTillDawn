@@ -23,7 +23,7 @@ public class GameSceneChanger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sceneTransition = GameObject.FindGameObjectWithTag("VHS").GetComponent<SceneTransition>();
+        //sceneTransition = GameObject.FindGameObjectWithTag("VHS").GetComponent<SceneTransition>();
         Highpass();
     }
 
@@ -33,10 +33,14 @@ public class GameSceneChanger : MonoBehaviour
         sceneTransition.isTouchingQuit = false;
     }
 
-    public void QuitScene()
+    public void QuitGame()
     {
         sceneTransition.isTouchingQuit = true;
         sceneTransition.isTouchingPlay = false;
+        //quit game, and quit in editor
+        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
+        
     }
 
     public void Lowpass()

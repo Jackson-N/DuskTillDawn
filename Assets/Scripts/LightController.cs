@@ -11,6 +11,7 @@ public class LightController : MonoBehaviour
     InputData _inputData;
 
     public Light light;
+    public LightDetection lightDetection;
     public bool isOn;
 
     //private InputDevice button;
@@ -34,7 +35,28 @@ public class LightController : MonoBehaviour
         {
             InitializeInputDevices();
         }
-        LightTimer();
+        //check for object interaction with the player, if the player is holding the light, turn on the light
+        if (_rightController.TryGetFeatureValue(CommonUsages.triggerButton, out bool triggerValue) && triggerValue)
+        {
+            light.enabled = true;
+            isOn = light.enabled;
+        }
+        else
+        {
+            light.enabled = false;
+            isOn = light.enabled;
+        }
+        //if the light is on, start the timer  
+        if (isOn)
+        {
+            LightTimer();
+        }
+        //if the light is off, stop the timer
+        else if (!isOn)
+        {
+            lightLifespan = 60.0f;
+            light.intensity = 0.0f;
+        }
     }
 
     public void LightTimer()
@@ -47,6 +69,9 @@ public class LightController : MonoBehaviour
         {
             Destroy(gameObject, 0.1f);
             lightLifespan = 0.0f;
+            //remove the object from the light source array
+            lightDetection.lightSource[lightDetection.index] = null;
+            lightDetection.index--;
         }
     }
 

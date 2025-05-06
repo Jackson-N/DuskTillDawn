@@ -333,7 +333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7238405422369531643, guid: 339da0ed33a42d149b949614399fe279, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_IntArgument
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7238405422369531643, guid: 339da0ed33a42d149b949614399fe279, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_IntArgument
@@ -600,6 +600,10 @@ PrefabInstance:
     - target: {fileID: 88370892226011299, guid: 367984ce661690f43a80174285216064, type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 88370892226011299, guid: 367984ce661690f43a80174285216064, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 88370892226011299, guid: 367984ce661690f43a80174285216064, type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
@@ -1289,7 +1293,7 @@ PrefabInstance:
     - target: {fileID: 7903300843247906375, guid: 71cb3fd20dade41448c8c759aa34b7d8, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1311402394}
     - target: {fileID: 7903300843247906375, guid: 71cb3fd20dade41448c8c759aa34b7d8, type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1297,6 +1301,10 @@ PrefabInstance:
     - target: {fileID: 7903300843247906375, guid: 71cb3fd20dade41448c8c759aa34b7d8, type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 7903300843247906375, guid: 71cb3fd20dade41448c8c759aa34b7d8, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7903300843247906375, guid: 71cb3fd20dade41448c8c759aa34b7d8, type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

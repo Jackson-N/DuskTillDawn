@@ -19,6 +19,8 @@ public class SceneTransition : MonoBehaviour
     public bool isTouchingPlay;
     public bool isTouchingQuit;
 
+    public FadeScreen fadeScreen;
+
     void Start()
     {
         self = this.gameObject;
@@ -27,6 +29,12 @@ public class SceneTransition : MonoBehaviour
     public void Update()
     {
         checkButton();
+
+        //if the text mesh is null, ignore the code
+        if (textMesh == null)
+        {
+            return;
+        }
     }
 
     public void GoToSceneAsync(int sceneIndex)
@@ -45,6 +53,7 @@ public class SceneTransition : MonoBehaviour
         while (timer <= 7.0f && !asyncLoad.isDone)
         {
             timer += Time.deltaTime;
+            fadeScreen.FadeOut();
             yield return null;
         }
 

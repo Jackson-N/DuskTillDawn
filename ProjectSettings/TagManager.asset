@@ -16,6 +16,9 @@ TagManager:
   - LeftHand
   - Clock
   - VHS
+  - Stick
+  - Cloth
+  - Stone
   layers:
   - Default
   - TransparentFX

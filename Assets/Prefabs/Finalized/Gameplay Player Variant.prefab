@@ -999,6 +999,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 0
   lightIntensity: 0
-  lightSource: {fileID: 2194054578786200639, guid: 6606adff9adcf524fb19f5850340c100, type: 3}
+  lightSource:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   target: {fileID: 5190319402231337161}
   lightSensDisplay: {fileID: 0}

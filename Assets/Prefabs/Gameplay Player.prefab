@@ -855,8 +855,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8ac2515f1f78f4793c76a89b31998b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sanity: 100
   currentSanity: 100
+  currentRate: 0
+  distance: 0
+  bear: {fileID: 0}
+  bearPos: {fileID: 0}
+  lightDetection: {fileID: 0}
 --- !u!4 &1616850209961884173 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2871854917430088270, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}

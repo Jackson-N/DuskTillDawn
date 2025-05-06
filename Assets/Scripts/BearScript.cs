@@ -46,6 +46,7 @@ public class BearScript : MonoBehaviour
     private float sanityCheck;
 
     private float time = 0.0f;
+    private float walkTimer = 10.0f;
     public bool gameOver = false;
     [SerializeField] public GameObject target;
     private float bearYRotation;
@@ -81,6 +82,7 @@ public class BearScript : MonoBehaviour
         killDistance = 5.0f;
         //sanity = GetComponent<SanityController>();
         bearIdle();
+        gameOver = false;
     }
 
     // Update is called once per frame
@@ -245,6 +247,15 @@ public class BearScript : MonoBehaviour
             }  
         }
         canSetWalkPoint = true;
+
+        //if bear does not make it to walkpoint in 10 seconds, set new walkpoint
+        //if the bear is not moving, set a new walkpoint
+        walkTimer -= Time.deltaTime;
+        if (walkTimer <= 0.0f)
+        {
+            walkPointSet = false;
+            walkTimer = 10.0f;
+        }
     }
 
     private void findWalkPoint()
@@ -334,5 +345,6 @@ public class BearScript : MonoBehaviour
         //bear is touching player, gameOver = true
         if (transform.position == player.transform.position) gameOver = true;
         else agent.SetDestination(player.transform.position);
+        gameOver = true;
     }
 }

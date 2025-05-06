@@ -32,6 +32,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Polished Scenes/Land_scene 1.unity
     guid: 80971e0a20ca5204f930e56563d55df4
+  - enabled: 1
+    path: Assets/Scenes/Polished Scenes/Level_Two.unity
+    guid: 5142033bd39e54b42b44b284f629d582
+  - enabled: 1
+    path: Assets/Scenes/Polished Scenes/GameLoseL2.unity
+    guid: 095d5a554c933d040a01f4baac4b588c
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}
